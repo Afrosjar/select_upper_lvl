@@ -1,0 +1,54 @@
+CREATE TABLE IF NOT EXISTS Genre (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(40) NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS Artists (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(40) NOT NULL
+);
+		
+
+CREATE TABLE IF NOT EXISTS ArtistsGenres (
+		genre_id INTEGER NOT NULL REFERENCES Genre(id),
+		artists_id INTEGER NOT NULL REFERENCES Artists(id)
+		UNIQUE(genre_id, artists_id),
+
+		
+);
+
+
+CREATE TABLE IF NOT EXISTS Alboms (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(40) NOT NULL,
+		year INTEGER NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS ArtistsAlboms (
+		albom_id INTEGER NOT NULL REFERENCES Alboms(id),
+		artists_id INTEGER NOT NULL REFERENCES Artists(id)
+		UNIQUE (albom_id, artists_id),
+
+);
+
+CREATE TABLE IF NOT EXISTS Songs (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(40) NOT NULL,
+		duration INTEGER NOT NULL,
+		albom_id INTEGER NOT NULL REFERENCES Alboms(id)
+);
+
+CREATE TABLE IF NOT EXISTS MixTape (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(40),
+		year INTEGER NOT NULL
+);
+		
+
+CREATE TABLE IF NOT EXISTS MixTapeSongs(
+		mixtape_id INTEGER NOT NULL REFERENCES MixTape(id),
+		song_id INTEGER NOT NULL REFERENCES songs(id),
+		UNIQUE(mixtape_id, song_id)
+);
