@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Artists (
 
 CREATE TABLE IF NOT EXISTS ArtistsGenres (
 		genre_id INTEGER NOT NULL REFERENCES Genre(id),
-		artists_id INTEGER NOT NULL REFERENCES Artists(id)
+		artists_id INTEGER NOT NULL REFERENCES Artists(id),
 		UNIQUE(genre_id, artists_id)
 
 		
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Alboms (
 
 CREATE TABLE IF NOT EXISTS ArtistsAlboms (
 		albom_id INTEGER NOT NULL REFERENCES Alboms(id),
-		artists_id INTEGER NOT NULL REFERENCES Artists(id)
+		artists_id INTEGER NOT NULL REFERENCES Artists(id),
 		UNIQUE (albom_id, artists_id)
 
 );
