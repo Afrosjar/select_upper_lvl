@@ -157,6 +157,10 @@ VALUES
 (11,1),
 (11,3);
 
+INSERT INTO artistsGenres (genre_id, artists_id)
+VALUES
+(2, 1);
+
 
 
 
